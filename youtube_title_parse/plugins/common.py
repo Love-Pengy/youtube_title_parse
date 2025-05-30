@@ -22,4 +22,5 @@ def clean_common_fluff(title):
     title = re.sub(r"\([Vv]{1}isualizer\)", "", title)    
     # (Official Audio)
     title = re.sub(r"\([Oo]{1}fficial [Aa]{1}udio\)", "", title)
+    title = re.sub(r"\([Aa]{1}udio\)", "", title)
     return title.strip()
