@@ -19,8 +19,25 @@ def clean_common_fluff(title):
     title = re.sub(r"\(\s*(with\s+)?lyrics\s*\)\s*", "", title, flags=re.IGNORECASE)
     title = re.sub(r"\s*\(\s*\)", "", title)  # ()
     # (Visualizer)
-    title = re.sub(r"\([Vv]{1}isualizer\)", "", title)    
+    title = re.sub(r"\(Visualizer\)", "", title, flags=re.IGNORECASE)    
     # (Official Audio)
-    title = re.sub(r"\([Oo]{1}fficial [Aa]{1}udio\)", "", title)
-    title = re.sub(r"\([Aa]{1}udio\)", "", title)
+    title = re.sub(r"\(Official Audio\)", "", title, flags=re.IGNORECASE)
+    # (Audio)
+    title = re.sub(r"\(Audio\)", "", title, flags=re.IGNORECASE)
+    # [Official Music Video] 
+    title = re.sub(r"\[Official Music Video\]", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\(Official Music Video\)", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\(Mini Version\)", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\(prod. [A-Za-z0-9]+\)", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\(VIP\)", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\(dir. [A-Za-z0-9]+\)", "", title, flags=re.IGNORECASE)
+    title = re.sub(r"\(Screensaver\)", "", title, flags=re.IGNORECASE)
+    
+    if("ft." in title): 
+        title = re.sub(r"\(ft. [A-Za-z0-9]+\)", "", title, flags=re.IGNORECASE)
+        title = title.split("ft.", 1)[0]
+    elif("feat." in title):  
+        title = re.sub(r"\(feat. [A-Za-z0-9]+\)", "", title, flags=re.IGNORECASE)
+        title = title.split("feat.", 1)[0]
+    
     return title.strip()
