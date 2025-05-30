@@ -18,4 +18,6 @@ def clean_common_fluff(title):
     )
     title = re.sub(r"\(\s*(with\s+)?lyrics\s*\)\s*", "", title, flags=re.IGNORECASE)
     title = re.sub(r"\s*\(\s*\)", "", title)  # ()
+    # (Visualizer)
+    title = re.sub(r"\([Vv]{1}isualizer\)", "", title)    
     return title.strip()
